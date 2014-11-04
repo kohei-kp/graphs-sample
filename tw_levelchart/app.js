@@ -6,24 +6,34 @@ $(function () {
     var series = createSeriesData(data);
 
     $('#chart').highcharts({
-      title: 'Count Stop Chart',
+      title: {
+        text:'Exp Chart'
+      },
       xAxis: {
         type: 'datetime'
       },
       yAxis: {
+        min: 0,
         title: {
           text: 'EXP'
         }
       },
       plotOptions: {
         line: {
-          lineWidth: 1.3
+          lineWidth: 1.3,
+          marker: {
+            radius: 3
+          }
         }
       },
       series: [{
         type: 'line',
         name: 'Exp Plan',
-        data: series
+        data: series.PLAN
+      }, {
+        type: 'line',
+        name: 'Exp Reality',
+        data: series.EXP
       }]
     });
   })
@@ -37,18 +47,28 @@ $(function () {
    */
   function createSeriesData(data) {
     var i,
-        ary = data.PLAN,
         tmp,
-        exps = [],
-        len = ary.length;
+        obj = {},
+        len,
+        ary = [];
 
-    for (i = 0; i < len; i += 1) {
-      tmp = ary[i];
+    $.each(data, function (key , val) {
+      ary = [];
+      len = val.length;
 
-      exps.push([changeDateToUnixTime(tmp.DATE), parseInt(tmp.EXP)]);
-    }
+      for (i = 0; i < len; i += 1) {
+        tmp = val[i];
+        ary.push([changeDateToUnixTime(tmp.DATE), parseInt(tmp.EXP)]);
+      }
 
-    return exps;
+      if (key === 'EXP_COUNT') {
+        obj.EXP = ary;
+      } else {
+        obj.PLAN = ary;
+      }
+    });
+
+    return obj;
   }
 
   /**
