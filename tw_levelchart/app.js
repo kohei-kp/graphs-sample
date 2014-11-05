@@ -32,11 +32,19 @@ $(function () {
       series: [{
         type: 'line',
         name: 'Exp Plan',
-        data: series.PLAN
+        data: series.PLAN,
+        zIndex: 1
       }, {
         type: 'line',
         name: 'Exp Reality',
-        data: series.EXP
+        data: series.EXP,
+        zIndex: 1
+      }, {
+        type: 'column',
+        name: 'Daily EXP',
+        data: series.BAR,
+        color: '#7798BF',
+        zIndex: 0
       }]
     });
   })
@@ -53,10 +61,12 @@ $(function () {
         tmp,
         obj = {},
         len,
-        ary = [];
+        ary = [],
+        ary2 = [];
 
     $.each(data, function (key , val) {
       ary = [];
+      ary2 = [];
       len = val.length,
       value = 0;
 
@@ -69,10 +79,12 @@ $(function () {
           value = parseInt(tmp.EXP);
         }
         ary.push([changeDateToUnixTime(tmp.DATE), value]);
+        ary2.push([changeDateToUnixTime(tmp.DATE), parseInt(tmp.EXP)]);
       }
 
       if (key === 'EXP_COUNT') {
         obj.EXP = ary;
+        obj.BAR = ary2;
       } else {
         obj.PLAN = ary;
       }
