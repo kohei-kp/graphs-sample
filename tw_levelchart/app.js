@@ -6,6 +6,9 @@ $(function () {
     var series = createSeriesData(data);
 
     $('#chart').highcharts({
+      chart: {
+        zoomType: 'xy'
+      },
       title: {
         text:'Exp Chart'
       },
@@ -54,11 +57,18 @@ $(function () {
 
     $.each(data, function (key , val) {
       ary = [];
-      len = val.length;
+      len = val.length,
+      value = 0;
 
       for (i = 0; i < len; i += 1) {
         tmp = val[i];
-        ary.push([changeDateToUnixTime(tmp.DATE), parseInt(tmp.EXP)]);
+
+        if (key === 'EXP_COUNT') {
+          value += parseInt(tmp.EXP);
+        } else {
+          value = parseInt(tmp.EXP);
+        }
+        ary.push([changeDateToUnixTime(tmp.DATE), value]);
       }
 
       if (key === 'EXP_COUNT') {
