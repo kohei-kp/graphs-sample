@@ -5,6 +5,12 @@ $(function () {
     // データ整形
     var series = createSeriesData(data);
 
+    Highcharts.setOptions({
+      global: {
+        useUTC: false
+      }
+    });
+
     $('#chart').highcharts({
       chart: {
         zoomType: 'xy'
@@ -85,6 +91,9 @@ $(function () {
       if (key === 'EXP_COUNT') {
         obj.EXP = ary;
         obj.BAR = ary2;
+
+        setAvgAndRestExp(value, len);
+
       } else {
         obj.PLAN = ary;
       }
@@ -111,5 +120,20 @@ $(function () {
     var d = new Date(date);
 
     return d.getTime();
+  }
+
+  function setAvgAndRestExp(exp, days) {
+    var max = 2039127154,
+        avg,
+        sub;
+
+    sub = max - exp;
+    avg = exp / days;
+    rate = max / avg;
+    
+
+    $('#rest').text(sub);
+    $('#togo').text(Math.ceil(rate));
+    $('#avg').text(Math.ceil(avg));
   }
 });

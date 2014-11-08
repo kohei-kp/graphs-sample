@@ -2,6 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <style>
+    .info {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    #rest,#togo,#avg {
+      font-size: 15px;
+      color: #F45566;
+      border-bottom: solid 1px #F45566;
+    }
+
+  </style>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src='../highchart/highcharts.js'></script>
   <script src='../highchart/sand-signika.js'></script>
@@ -10,5 +22,17 @@
 </head>
 <body>
   <div id='chart'></div>
+
+  <div id='wrap'>
+    <div class='info'>
+      The rest <span id='rest'></span> exp.
+    </div>
+    <div class='info'>
+      Daily average <span id='avg'></span> exp.
+    </div>
+    <div class='info'>
+      At this rate with <span id='togo'></span> days to go.
+    </div>
+  </div>
 </body>
 </html>
