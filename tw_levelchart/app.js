@@ -129,7 +129,7 @@ $(function () {
 
     sub = max - exp;
     avg = exp / days;
-    rate = max / avg;
+    rate = sub / avg;
     
 
     $('#rest').text(sub);
