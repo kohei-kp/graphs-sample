@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="../highchart/highcharts.js"></script>
+  <script src="../highchart/sand-signika.js"></script>
+  <script src="js/app.js"></script>
+  <title>オシャレ眼鏡決定戦 投票数グラフ</title>
+</head>
+<body>
+
+  <div id="wrapper">
+    <h3 class="title">オシャレ眼鏡決定戦 投票結果グラフページ</h3>
+    <div id="info">
+      無料オンラインゲームTalesWeaverに登場する「マキシミン・リフクネ」のお誕生日記念サイト、<br>
+      オシャレ眼鏡決定戦の投票結果のグラフです。
+    </div>
+    <h4 class="title">サーバ選択</h4>
+    <select id="server" name="">
+      <option value="ALL">全サーバ</option>
+      <option value="ZERN">ゼルナ</option>
+      <option value="ELPH">エルフィンタ</option>
+      <option value="MOEN">モエン</option>
+      <option value="MIST">ミストラル</option>
+      <option value="ROZE">ローゼンバーグ</option>
+    </select>
+
+    <button id="plot">表示する</button>
+
+    <div id="chart-area"></div>
+  </div>
+</body>
+</html>

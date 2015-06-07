@@ -1,0 +1,27 @@
+* {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+body {
+  color: #90805a;
+  background: url(../image/bg_line.png) repeat-x center top, url(../image/bg.png);
+}
+
+#wrapper {
+  padding: 50px 10px 20px 10px;
+}
+
+#info {
+  margin-left: 10px;
+}
+
+.title {
+  margin: 10px 0 0 10px;
+}
+
+#chart-area {
+  height: 400px;
+  width: 1200px;
+  background: #EEEEEE;
+}
